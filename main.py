@@ -7,9 +7,8 @@ app = Flask(__name__)
 TOKEN = os.environ.get("BOT_TOKEN")
 URL = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
-# указываем нужные айди
-ALLOWED_CHAT_ID = -1003064609445   # группа
-ALLOWED_THREAD_ID = 3              # конкретная тема
+ALLOWED_CHAT_ID = -1003064609445
+ALLOWED_THREAD_ID = 3
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
@@ -37,7 +36,6 @@ def webhook():
 
     return "ok"
 
-
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
     return "Bot is running!"
