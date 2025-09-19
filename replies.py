@@ -42,6 +42,9 @@ SMART_QUOTES = [
     "Факт: пчёлы узнают лица людей 🐝👤",
 ]
 
+# Этот список будет дублировать "Скинь фотку" несколько раз
+EXTRA_RANDOM = ["Скинь фотку"] * 5  # чем больше повторов, тем выше шанс
+
 def normalize(text: str) -> str:
     return re.sub(r'[^а-яёa-z0-9\s]', '', text.lower()).strip()
 
@@ -50,4 +53,4 @@ def get_reply(text: str) -> str:
     for key, replies in REPLIES.items():
         if key in clean:
             return random.choice(replies)
-    return random.choice(SMART_QUOTES)
+    return random.choice(SMART_QUOTES + EXTRA_RANDOM)
